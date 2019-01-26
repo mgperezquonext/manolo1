@@ -41,13 +41,7 @@ public class Suscriptor {
             @NotEmpty String asunto,
             @NotEmpty@TextArea String texto,
             Set<Suscriptor> seleccion) {
-        seleccion.forEach(s -> {
-            try {
-                EmailHelper.sendEmail(s.getEmail(), asunto, texto, false);
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
-        });
+        seleccion.forEach(s -> System.out.println("Enviar email a " + s.getNombre()));
     }
 
 }

@@ -1,11 +1,13 @@
 package io.mateu.model;
 
+import io.mateu.mdd.core.util.Helper;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.PostPersist;
 import javax.validation.constraints.NotEmpty;
 import java.net.URL;
 import java.time.LocalDate;
@@ -23,6 +25,16 @@ public class Proyecto {
 
     private URL url;
 
-    private boolean visible = true;
+    private boolean hecho;
+
+
+    @PostPersist
+    public void postPersist() throws Throwable {
+        Helper.notransact(em -> {
+            em.createQuery("select s from " + Suscriptor.class.getName() + " s")
+                    .getResultList()
+                    .forEach(s -> System.out.println("Enviando email a " + s));
+        });
+    }
 
 }

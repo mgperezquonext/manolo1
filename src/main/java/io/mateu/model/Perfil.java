@@ -2,18 +2,19 @@ package io.mateu.model;
 
 import com.vaadin.server.ExternalResource;
 import com.vaadin.ui.Image;
+import io.mateu.mdd.core.annotations.Caption;
+import io.mateu.mdd.core.annotations.Output;
 import io.mateu.mdd.core.annotations.SameLine;
 import lombok.Getter;
 
 @Getter
 public class Perfil {
 
-    private String nombre = "Manolo";
-
     @SameLine
     private Image foto =
             new Image("",
-                    new ExternalResource("https://avatars.schd.ws/5/12/2660785/avatar.jpg.320x320px.jpg"));
+                    new ExternalResource("https://pbs.twimg.com/profile_images/675496971763773440/p8oE-vA8_400x400.jpg"));
+
 
     private String texto = "bwdh wehwedowe dwed wudweud ewdiwedw ediwediwed" +
             "wudewudhwed wediwediwed wdiwdiwedwed wdiwed" +
@@ -23,4 +24,9 @@ public class Perfil {
             "weduiwed wediwd w dw diwd wi di wd" +
             "weudwidw";
 
+
+    @Override
+    public String toString() {
+        return "Yo, Donald";
+    }
 }
