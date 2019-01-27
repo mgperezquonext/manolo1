@@ -1,6 +1,7 @@
 package io.mateu;
 
 import io.mateu.mdd.core.annotations.Action;
+import io.mateu.mdd.core.annotations.Caption;
 import io.mateu.mdd.core.annotations.Private;
 import io.mateu.mdd.core.app.AbstractAction;
 import io.mateu.mdd.core.app.MDDOpenCRUDAction;
@@ -21,7 +22,8 @@ public class MyApp extends SimpleMDDApplication {
     }
 
     @Action(order = 3)
-    public void suscribirme(@NotEmpty String nombre, @NotEmpty String email) throws Throwable {
+    public void suscribirme(@NotEmpty String nombre,
+      @NotEmpty String email) throws Throwable {
         Helper.transact(em -> {
             em.persist(new Suscriptor(email, nombre));
         });
@@ -30,13 +32,14 @@ public class MyApp extends SimpleMDDApplication {
     @Action(order = 2)
     public List<Proyecto> proyectos() throws Throwable {
         return Helper.selectObjects(
-                "select x from " + Proyecto.class.getName() +
+                "select x from " +
+                        Proyecto.class.getName() +
                         " x order by x.nombre");
     }
 
-    @Action(order = 4)
+    @Action(value = "Proyectos", order = 4)
     @Private
-    public AbstractAction proys() {
+    public AbstractAction misProyectos() {
         return new MDDOpenCRUDAction(Proyecto.class);
     }
 

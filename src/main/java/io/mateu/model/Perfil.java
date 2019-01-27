@@ -13,11 +13,14 @@ public class Perfil {
     @SameLine
     private Image foto =
             new Image("",
-                    new ExternalResource("https://pbs.twimg.com/" +
-                            "profile_images/675496971763773440/p8oE-vA8_400x400.jpg"));
+                    new ExternalResource(
+                            "https://pbs.twimg.com/" +
+                            "profile_images/675496971763773440/" +
+                                    "p8oE-vA8_400x400.jpg"));
 
 
-    private String texto = "bwdh wehwedowe dwed wudweud ewdiwedw ediwediwed" +
+    private String texto = "bwdh wehwedowe dwed wudweud " +
+            "ewdiwedw ediwediwed" +
             "wudewudhwed wediwediwed wdiwdiwedwed wdiwed" +
             "wudweuduwed wdi widbw diw diw dw" +
             "wdwuendwe diw diwd wid iw ede whed ehd" +
@@ -30,4 +33,5 @@ public class Perfil {
     public String toString() {
         return "Yo, Donald";
     }
+
 }
